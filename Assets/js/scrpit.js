@@ -91,10 +91,18 @@ function displayCity(city) {
     var getCity = JSON.parse(localStorage.getItem("city"))
     if(getCity){
         for (let index = 0; index < getCity.length; index++) {
-         var listCity = document.createElement("span")   
+         var listCity = document.createElement("button")   
+
          cityName.appendChild(listCity)
          listCity.innerHTML=getCity[index]
-            
+         listCity.addEventListener('click', cityClick)
+
         }
     }
+}
+
+var cityClick = function(e){
+   
+newName.value = e.target.innerText
+GetInfo()
 }
