@@ -47,6 +47,7 @@ function GetInfo() {
     });
     cityName.innerHTML = "--" + newName.value + "--";
     savedCities(newName.value)
+    displayCity(newName.value)
 }
 function DefaultScreen() {
   document.getElementById("cityInput").defaultValue = "Minneapolis";
@@ -83,4 +84,17 @@ function savedCities(newName) {
     searchCities.push(newName)
     localStorage.setItem("city", JSON.stringify(searchCities));
   }
+}
+
+function displayCity(city) {
+    cityName.innerHTML = ""
+    var getCity = JSON.parse(localStorage.getItem("city"))
+    if(getCity){
+        for (let index = 0; index < getCity.length; index++) {
+         var listCity = document.createElement("span")   
+         cityName.appendChild(listCity)
+         listCity.innerHTML=getCity[index]
+            
+        }
+    }
 }
